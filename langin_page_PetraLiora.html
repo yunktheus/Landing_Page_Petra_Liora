@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Petra Liora Joias • Semijoias e Folheados</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #fdfaf6;
+      color: #3e2e23;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, .logo, .serif {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(253, 250, 246, 0.94);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+      z-index: 1000;
+      border-bottom: 1px solid #e8d9c6;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #3a2c1c;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo i {
+      font-size: 2rem;
+      color: #c59b5f;
+    }
+    .nav-menu {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-menu a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #5e4636;
+      font-size: 0.95rem;
+      letter-spacing: 0.4px;
+      transition: color 0.3s;
+    }
+    .nav-menu a:hover {
+      color: #b4873a;
+    }
+    .btn-outline {
+      border: 2px solid #c59b5f;
+      color: #c59b5f;
+      padding: 8px 22px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 0.9rem;
+      background: transparent;
+    }
+    .btn-outline:hover {
+      background: #c59b5f;
+      color: white;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      width: 28px;
+      height: 3px;
+      background: #3a2c1c;
+      border-radius: 10px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 150px 0 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 45px;
+    }
+    .hero-text {
+      flex: 1 1 480px;
+    }
+    .hero-text h1 {
+      font-size: clamp(2.4rem, 5.5vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #2b1f14;
+    }
+    .hero-text h1 span {
+      color: #c59b5f;
+      position: relative;
+    }
+    .hero-text p {
+      font-size: 1.15rem;
+      color: #5f4d3a;
+      margin-bottom: 30px;
+      max-width: 500px;
+    }
+    .btn-group {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: #c59b5f;
+      color: white;
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(197, 155, 95, 0.3);
+      transition: transform 0.2s, box-shadow 0.25s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 35px rgba(197, 155, 95, 0.4);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: #3a2c1c;
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid #d1b894;
+      transition: 0.3s;
+    }
+    .btn-secondary:hover {
+      background: #f7efe4;
+      border-color: #b58a49;
+    }
+    .hero-image {
+      flex: 1 1 380px;
+      background: linear-gradient(135deg, #f9f0e3, #f3e2cf);
+      border-radius: 40px;
+      height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 30px 45px rgba(160, 120, 60, 0.1);
+      overflow: hidden;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 40px;
+    }
+
+    /* Seções */
+    .section {
+      padding: 90px 0;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-title h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #2b1f14;
+      margin-bottom: 10px;
+    }
+    .section-title p {
+      color: #7a6857;
+      font-size: 1.1rem;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 35px;
+    }
+    .product-card {
+      background: white;
+      border-radius: 28px;
+      padding: 25px 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.03);
+      text-align: center;
+      border: 1px solid #ede3d3;
+      transition: 0.3s;
+    }
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 45px rgba(160, 120, 60, 0.1);
+    }
+    .product-img {
+      width: 100%;
+      height: 200px;
+      border-radius: 20px;
+      background: #faf4ea;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: #c59b5f;
+      overflow: hidden;
+    }
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .product-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+    .price {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #b4873a;
+      margin: 12px 0 18px;
+    }
+    .btn-small {
+      display: inline-block;
+      background: #c59b5f;
+      color: white;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
+    .btn-small:hover {
+      background: #a0733c;
+    }
+
+    .about-section {
+      background: #f9f2e8;
+      border-radius: 60px;
+      padding: 60px 45px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 45px;
+      align-items: center;
+      margin: 30px 0;
+    }
+    .about-text {
+      flex: 1 1 400px;
+    }
+    .about-text h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+    .about-image {
+      flex: 1 1 250px;
+      background: #e7d7c0;
+      border-radius: 40px;
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a08060;
+      font-size: 3rem;
+    }
+
+    .cta {
+      background: linear-gradient(110deg, #c59b5f, #9e763a);
+      border-radius: 50px;
+      padding: 70px 50px;
+      text-align: center;
+      color: white;
+      margin: 60px 0;
+    }
+    .cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 18px;
+    }
+    .cta .btn-primary {
+      background: white;
+      color: #5e3a1e;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      color: #8b7964;
+      border-top: 1px solid #e0cfb8;
+    }
+
+    /* WhatsApp fixo */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #25D366;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+      color: white;
+      font-size: 2rem;
+      text-decoration: none;
+      z-index: 999;
+      transition: 0.3s;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        max-width: 280px;
+        height: 100vh;
+        background: #fdfaf6;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2.5rem;
+        box-shadow: -5px 0 30px rgba(0,0,0,0.08);
+        transition: 0.35s ease;
+      }
+      .nav-menu.active {
+        right: 0;
+      }
+      .hamburger {
+        display: flex;
+        z-index: 1001;
+      }
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .btn-group {
+        justify-content: center;
+      }
+      .about-section {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-container">
+      <a href="#" class="logo">✦ Petra Liora</a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#produtos">Produtos</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="https://wa.me/5582988361311?text=Ol%C3%A1%2C%20Petra%20Liora!%20Vim%20pelo%20site." target="_blank" class="btn-outline">WhatsApp</a></li>
+      </ul>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-text">
+          <h1>Joias que <span>iluminam</span> sua essência</h1>
+          <p>Semijoias e folheados artesanais que realçam sua beleza. Enviamos para todo o Brasil direto de Maceió.</p>
+          <div class="btn-group">
+            <a href="https://photos.app.goo.gl/ZYRdwQe3gnMb4djP6" target="_blank" class="btn-primary">Ver Catálogo Completo</a>
+            <a href="https://wa.me/5582988361311?text=Ol%C3%A1%21+Quero+saber+mais+sobre+as+joias" target="_blank" class="btn-secondary">Falar no WhatsApp</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <!-- Imagem ilustrativa (substituir pela foto principal da marca) -->
+          <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Joias Petra Liora">
+        </div>
+      </section>
+
+      <!-- Produtos -->
+      <section id="produtos" class="section">
+        <div class="section-title">
+          <h2>Destaques da Coleção</h2>
+          <p>Peças que traduzem delicadeza e personalidade</p>
+        </div>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-img">
+              <img src="https://images.unsplash.com/photo-1599643478518-a86b0a5d7c8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Colar Cordão Baiano">
+            </div>
+            <h3>Colar Cordão Baiano</h3>
+            <p>O básico nada básico, tradicional e cheio de estilo.</p>
+            <div class="price">R$ 54,90</div>
+            <a href="https://wa.me/5582988361311?text=Ol%C3%A1%2C+quero+o+Colar+Cord%C3%A3o+Baiano%21" target="_blank" class="btn-small">Comprar via WhatsApp</a>
+          </div>
+          <div class="product-card">
+            <div class="product-img">
+              <img src="https://images.unsplash.com/photo-1603561591411-07134e4752c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Colar Anel Solitário">
+            </div>
+            <h3>Colar Anel Solitário</h3>
+            <p>Elegância minimalista que acompanha você em todos os momentos.</p>
+            <div class="price">R$ 59,90</div>
+            <a href="https://wa.me/5582988361311?text=Ol%C3%A1%2C+quero+o+Colar+Anel+Solit%C3%A1rio%21" target="_blank" class="btn-small">Comprar via WhatsApp</a>
+          </div>
+          <div class="product-card">
+            <div class="product-img">
+              <img src="https://images.unsplash.com/photo-1635767798638-3e4b7dd4f1c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Trio de Argolinhas Trevo">
+            </div>
+            <h3>Trio de Argolinhas Trevo</h3>
+            <p>Três argolinhas cheias de charme e significado.</p>
+            <div class="price">R$ 70,00</div>
+            <a href="https://wa.me/5582988361311?text=Ol%C3%A1%2C+quero+o+Trio+de+Argolinhas+Trevo%21" target="_blank" class="btn-small">Comprar via WhatsApp</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sobre / CEO -->
+      <section id="sobre" class="about-section">
+        <div class="about-image">
+          <!-- Foto da Priscila (placeholder) -->
+          <span>📸</span>
+        </div>
+        <div class="about-text">
+          <h2>Por trás da Petra Liora</h2>
+          <p>Olá, eu sou <strong>Priscila Queiroz</strong>, fundadora da Petra Liora Joias. Cada peça é escolhida a dedo para trazer luz e autenticidade ao seu dia a dia. Trabalhamos com folheados e semijoias de qualidade, pensando em mulheres que amam se sentir especiais.</p>
+          <p style="margin-top: 15px;">📍 Maceió • Enviamos para todo o Brasil</p>
+          <a href="https://www.instagram.com/petraliora" target="_blank" class="btn-small" style="margin-top: 20px; background: #d1b894; color: #3a2c1c;">@petraliora no Instagram</a>
+        </div>
+      </section>
+
+      <!-- Catálogo -->
+      <section id="catalogo" class="section" style="text-align: center;">
+        <div class="section-title">
+          <h2>Catálogo Completo</h2>
+          <p>Veja todos os modelos disponíveis e escolha o seu favorito</p>
+        </div>
+        <a href="https://photos.app.goo.gl/ZYRdwQe3gnMb4djP6" target="_blank" class="btn-primary" style="font-size: 1.1rem;">Abrir Catálogo no Google Fotos ↗</a>
+        <p style="margin-top: 20px; color: #7a6857;">Ou se preferir, peça atendimento personalizado pelo WhatsApp.</p>
+      </section>
+
+      <!-- CTA final -->
+      <section class="cta">
+        <h2>Pronta para iluminar seu visual?</h2>
+        <p style="margin-bottom: 28px; font-size: 1.2rem;">Fale com a gente agora mesmo e garanta sua joia favorita.</p>
+        <a href="https://wa.me/5582988361311?text=Ol%C3%A1%21+Quero+consultar+disponibilidade+e+pedidos." target="_blank" class="btn-primary">💬 Chamar no WhatsApp</a>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Petra Liora Joias · por @pri.queiroz__ · Maceió</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flutuante -->
+  <a href="https://wa.me/5582988361311?text=Ol%C3%A1%2C+vim+pelo+site+Petra+Liora%21" target="_blank" class="whatsapp-float" title="Fale conosco no WhatsApp">💬</a>
+
+  <script>
+    const hamburger = document.getElementById('hamburgerBtn');
+    const navMenu = document.getElementById('navMenu');
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
